@@ -31,8 +31,7 @@ activity <- rbind(y_train, y_test)
 names(activity) <- 'activity'
 dataSet <- cbind(subject,activity, dataSet)
 
-## From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-# After reshape2 package installation
+## Second independent tidy data set with the average of each variable for each activity and each subject.
 baseData <- melt(dataSet,(id.vars=c("subject","activity")))
 secondDataSet <- dcast(baseData, subject + activity ~ variable, mean)
 names(secondDataSet)[-c(1:2)] <- paste("[mean of]" , names(secondDataSet)[-c(1:2)] )
